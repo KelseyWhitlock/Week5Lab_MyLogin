@@ -50,7 +50,19 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("password", password);
             String note = "Enter your username and password";
             request.setAttribute("message", note);
+            getServletContext().getRequestDispatcher("/WEB-INF/login.jsp")
+                .forward(request, response);
         }
+        user = checked.login(usename, password);
+        
+        if(user != null){
+            HttpSession session = request.getSession();
+            session.setAttribute("user", user);
+            response.sendRedirect("/Week5Lab_myLogin/home");
+            
+        }
+        
+
         
     }
 
