@@ -29,6 +29,10 @@ public class HomeServlet extends HttpServlet {
             response.sendRedirect("/Week5Lab_MyLogin/login");
         }
         
+        request.setAttribute("user",user);
+       getServletContext().getRequestDispatcher("/WEB-INF/home.jsp")
+                .forward(request, response);
+        
          
        
     }
