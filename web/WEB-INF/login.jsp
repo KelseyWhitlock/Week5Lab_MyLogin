@@ -17,6 +17,7 @@
             Username: <input type="text" name="username" value="${username}">
             Password: <input type="password" name="pass" value="${password}">
             <input type="submit" value="Log in">
+            ${wrong}
         </form>
     </body>
 </html>
