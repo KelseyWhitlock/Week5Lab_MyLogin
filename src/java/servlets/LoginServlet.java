@@ -42,12 +42,12 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         String usename = request.getParameter("username");
         String password = request.getParameter("pass");
-        User user = null;
+        User user = new User();
         AccountService checked = new AccountService();
         
         if(usename == null || usename.equals("") && password == null || password.equals("") ){
             request.setAttribute("username", usename);
-            request.setAttribute("password", password);
+            request.setAttribute("pass", password);
             String note = "Enter your username and password";
             request.setAttribute("message", note);
             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp")
@@ -58,8 +58,14 @@ public class LoginServlet extends HttpServlet {
         if(user != null){
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            response.sendRedirect("/Week5Lab_myLogin/home");
-            
+            response.sendRedirect("/Week5Lab_myLogin/home");  
+        }else{
+            request.setAttribute("usename", user);
+            request.setAttribute("pass", password);
+            String note = "Wrong information";
+            request.setAttribute("message", note);
+             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp")
+                .forward(request, response);
         }
         
 
