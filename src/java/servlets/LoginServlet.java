@@ -58,7 +58,8 @@ public class LoginServlet extends HttpServlet {
         if(user != null){
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            response.sendRedirect("/Week5Lab_myLogin/home");  
+            getServletContext().getRequestDispatcher("/WEB-INF/home.jsp")
+                .forward(request, response);  
         }else{
             request.setAttribute("usename", user);
             request.setAttribute("pass", password);
