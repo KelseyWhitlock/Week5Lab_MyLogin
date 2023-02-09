@@ -12,15 +12,22 @@ import models.User;
  * @author Kelsey
  */
 public class AccountService {
+    public AccountService(){
+        
+    }
     public User login(String username, String password){
-        if((username.equals("aba") || username.equals("barb") &&
-                password.equals("password"))){
-            User user = new User(username, password);
-            return user;    
-        } 
-        else
-            return null;
-            
+       String name1 = "aba";
+       String name2 = "barb";
+       String password1 ="password";
+       
+       if(username.equals(name1) || username.equals(name2) && password.equals(password1)){
+           User user = new User(username, password);
+           user.setPassword(null);
+           return user;
+       }else{
+           return null;
+       }
+       
     }
     
 }
